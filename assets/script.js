@@ -4,7 +4,9 @@
 // WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
 console.log("i am in script.js")
-var weatherApi = "https://api.openweathermap.org/data/2.5/forecast?lat=35.2&lon=111.65&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial"
+var weatherApi = "https://api.openweathermap.org/data/2.5/forecast?lat=34.7392&lon=112.0099&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial"
+var newYorkWeather = "https://api.openweathermap.org/data/2.5/weather?lat=40.7128&lon=74.0060&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial"
+
 
 fetch(weatherApi)
     .then(function (response) {
@@ -14,13 +16,18 @@ fetch(weatherApi)
     .then(function (data) {
         console.log(data);
     })
-    .catch ( function ( error){
+    .catch(function (error) {
         console.error(error);
     })
 
 
 
-
+$(document).ready(function () {
+    $('#newYorkBtn').click(functtion() {
+        fetch(newYorkWeather)
+        .then
+    });
+});
 
 
 
