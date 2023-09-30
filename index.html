@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="./assets/style.css" />
+  <title>Weather API</title>
+</head>
+
+<body>
+  <div class="p-3 mb-2 text-center bg-primary text-white">
+    <header>
+      <h1>Weather Dashboard</h1>
+    </header>
+  </div>
+  <!-- <div class="d-flex justify-content-start min-vh-100 bg-light"> -->
+  <div class="container">
+    <div class="row">
+      <section class="col-sm-3">
+        <h2>Search for current Weather!</h2>
+        <p>Using the search bar type your City State or Zipcode!</p>
+        <form class="form-horizontal">
+          <div class="form-group">
+            <div class="col-sm-4">
+              <input id="focusedInput" type="text" value="Search here">
+            </div>
+          </div>
+        </form>
+        <div class="col-md-6 d-flex">
+          <button class="btn btn-default">New York</button>
+          <button class="btn btn-default">Los Angeles</button>
+          <button class="btn btn-default">Chicago</button>
+          <button class="btn btn-default">Phoenix</button>
+          <button class="btn btn-default">Orlando</button>
+        </div>
+      </section>
+      <section class="col-md-9">
+        <div class="row">
+          <div class="text-center">
+          <!-- Add space between containers  -->
+            <h1>Todays Forcast</h1>
+            <p>City Name + Date</p>
+            <p>Temp: farenheight</p>
+            <p>Wind Speed</p>
+            <p>humidity</p>
+          </div>
+          <div class="row">
+            <div class="text-center">
+              <h2>Five Day Forcast</h2>
+            </div>
+            <section class="col-md-2 p-2 bg-info">
+              <h3>Day One</h3>
+              <p>Date</p>
+              <p>Temp: farenheight</p>
+              <p>Wind Speed</p>
+              <p>humidity</p>
+            </section>
+            <section class="col-md-2 p-2 bg-warning">
+              <h3>Day Two</h3>
+              <p>Date</p>
+              <p>Temp: farenheight</p>
+              <p>Wind Speed</p>
+              <p>humidity</p>
+            </section>
+            <section class="col-md-2 p-2 bg-success">
+              <h3>Day Three</h3>
+              <p>Date</p>
+              <p>Temp: farenheight</p>
+              <p>Wind Speed</p>
+              <p>humidity</p>
+            </section>
+            <section class="col-md-2 m-2 bg-danger">
+              <h3>Day Four</h3>
+              <p>Date</p>
+              <p>Temp: farenheight</p>
+              <p>Wind Speed</p>
+              <p>humidity</p>
+            </section>
+            <section class="col-md-2 m-2 bg-primary">  
+             <!-- bg-{class} can change my background color  -->
+              <h3>Day Five</h3>
+              <p>Date</p>
+              <p>Temp: farenheight</p>
+              <p>Wind Speed</p>
+              <p>humidity</p>
+            </section>
+      </section>
+    </div>
+    <script src="./assets/script.js"></script>
+</body>
+
+</html>
