@@ -1,44 +1,56 @@
-// ```
-// GIVEN a weather dashboard with form inputs
+document.addEventListener('DOMContentLoaded', function () {
+    // Add an event listener to the New York button
+    document.getElementById('newYorkBtn').addEventListener('click', function () {
+        // Show the forecast containers
+        document.querySelectorAll('.forecast-container, .col-md-2, .h3').forEach(function (element) {
+            element.style.display = 'block';
+        });
 
-// WHEN I search for a city
-// THEN I am presented with current and future conditions for that city and that city is added to the search history
-console.log("i am in script.js")
-var weatherApi = "https://api.openweathermap.org/data/2.5/forecast?lat=34.7392&lon=112.0099&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial"
-var newYorkWeather = "https://api.openweathermap.org/data/2.5/weather?lat=40.7128&lon=74.0060&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial"
+        // Current weather API URL
+        var currentWeatherApi = "https://api.openweathermap.org/data/2.5/weather?q=New York&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
+        var fiveDayForcast = "https://api.openweathermap.org/data/2.5/forecast?q=New York&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
 
+        // Fetch current weather data
+        fetch(currentWeatherApi)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+            document.getElementById('currentCityNameDate').textContent = data.name + " " + data.dt;
+            document.getElementById('currentTemp').textContent = "Temperature: " + data.main.temp + "°F";
+            document.getElementById('currentWindSpeed').textContent = "Wind Speed: " + data.wind.speed + " mph";
+            document.getElementById('currentHumidity').textContent = "Humidity: " + data.main.humidity + "%";
+        })
+        .catch(function (error) {
+            console.error('Error fetching current weather:', error);
+        });
 
-fetch(weatherApi)
-    .then(function (response) {
-        console.log(response)
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    })
-    .catch(function (error) {
-        console.error(error);
-    })
+        // Fetching 5 day forecast
+        fetch(fiveDayForcast)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            // Handle the 5 day forecast data
+            console.log(data);
 
+            var firstDayData = data.list[0];
 
+            var date = firstDayData.dt_txt;
+            var temperature = firstDayData.main.temp;
+            var windSpeed = firstDayData.wind.speed;
+            var humidity = firstDayData.main.humidity;
 
-$(document).ready(function () {
-    $('#newYorkBtn').click(functtion() {
-      
+            var dayOneElement = document.getElementById('dayOne');
+            if (dayOneElement) {
+                dayOneElement.innerHTML = `
+                    <h3>${date}</h3>
+                    <p>Temperature: ${temperature}°F</p>
+                    <p>Wind Speed: ${windSpeed} mph</p>
+                    <p>Humidity: ${humidity}%</p>
+                `;
+            }
+        });
     });
 });
-
-
-
-
-// WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, and the wind speed
-
-
-// WHEN I view future weather conditions for that city
-// THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
-
-
-// WHEN I click on a city in the search history
-// THEN I am again presented with current and future conditions for that city
-// ```
