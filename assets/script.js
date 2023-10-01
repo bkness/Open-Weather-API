@@ -24,8 +24,7 @@ fetch(weatherApi)
 
 $(document).ready(function () {
     $('#newYorkBtn').click(functtion() {
-        fetch(newYorkWeather)
-        .then
+      
     });
 });
 
