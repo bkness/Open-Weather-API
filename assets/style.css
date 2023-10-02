@@ -41,8 +41,7 @@ h1 {
 }
 
 .forecast-container,
-.col-md-2,
-h2 {
+.col-md-2 {
     display: none;
 }
 
@@ -58,6 +57,19 @@ section {
 button {
     width: 180px;
 
+}
+
+.suggestion-item {
+    cursor: pointer;
+    padding: 8px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+    margin-top: 2px;
+}
+
+.suggestion-item:hover {
+    background-color: #f2f2f2;
 }
 
 /* media queries to improve look on smaller px screens */

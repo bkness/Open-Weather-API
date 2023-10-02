@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/style.css" />
@@ -28,6 +29,7 @@
             </div>
           </div>
         </form>
+        <div id="suggestions"></div> 
         <div class="col-md-6">
           <button id="newYorkBtn" class="btn btn-primary m-1" style="border-radius: 7px;">New York</button>
           <button id="phoenixBtn" class="btn btn-primary m-1" style="border-radius: 7px;">Phoenix</button>
@@ -48,12 +50,13 @@
               <p class="weather-info" id="currentTemp"></p>
               <p class="weather-info" id="currentWindSpeed"></p>
               <p class="weather-info" id="currentHumidity"></p>
+              <p class="weather-info" id="currentCondition">Condition: <i id="conditionIcon"></i></p>
             </div>
           </div>
         </div>
-        <div class="row" id="forecastRow">
+        <div class="row">
           <div class="text-center">
-            <h2>Five Day Forecast</h2>
+            <h2 id="forecastHeading">Five Day Forecast</h2>
           </div>
           <section class="col-md-2 m-2 bg-secondary text-white" style="border: 1px solid secondary;" id="dayOne">
             <h3>Day One</h3>

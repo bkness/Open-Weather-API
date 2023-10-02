@@ -2,9 +2,27 @@ document.addEventListener('DOMContentLoaded', function () {
     var searchInput = document.getElementById('focusedInput');
     searchInput.addEventListener('click', function () {
         this.value = '';
+        var suggestionsContainer = document.getElementById('suggestions');
     });
 
     // Define fetchWeatherData outside of any event listener
+    function fetchWeatherData(cityName) {
+        // ... (rest of the code for fetchWeatherData function)
+    }
+
+    // Event listener for form submission
+    document.querySelector('form').addEventListener('submit', function (event) {
+        event.preventDefault(); // Prevent the form from actually submitting
+
+        var cityName = document.getElementById('focusedInput').value;
+        fetchWeatherData(cityName);
+
+        // Show the forecast containers
+        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+            element.style.display = 'block';
+        });
+    });
+
     function fetchWeatherData(cityName) {
         var currentWeatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
         var fiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
@@ -21,10 +39,17 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('currentTemp').textContent = "Temperature: " + data.main.temp + "°F";
                 document.getElementById('currentWindSpeed').textContent = "Wind Speed: " + data.wind.speed + " mph";
                 document.getElementById('currentHumidity').textContent = "Humidity: " + data.main.humidity + "%";
+                document.getElementById('currentCondition').textContent = "Condition: " + data.weather[0].main;
             })
             .catch(function (error) {
                 console.error('Error fetching current weather:', error);
             });
+
+            function showForecastHeading() {
+            var forecastHeading = document.createElement('h2');
+            forecastHeading.textContent = '5 Day Forecast';
+            document.getElementById('forecastContainer').appendChild(forecastHeading);
+        }
 
         // Fetching 5 day forecast
         fetch(fiveDayForecast)
