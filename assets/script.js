@@ -171,14 +171,14 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('portlandBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
             element.style.display = 'block';
         });
         fetchWeatherData('Portland');
     });
 
     document.getElementById('vancouverBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
             element.style.display = 'block';
         });
         fetchWeatherData('Vancouver');

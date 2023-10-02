@@ -53,3 +53,18 @@ button {
     width: 180px;
     
 }
+
+/* media queries to improve look on smaller px screens */
+@media (max-width: 768px) {
+    .col-md-2 {
+      width: 100%; /* Make each box take up 100% of the width */
+      margin-bottom: 10px; /* Add some space between the boxes */
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .col-md-2 {
+      width: 18%; /* Reset the width for larger screens */
+    }
+  }
+  
