@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('newYorkBtn').addEventListener('click', function () {
         // Show the forecast containers
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
 
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     document.getElementById('phoenixBtn').addEventListener('click', function () {
         // Show the forecast containers
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
 
@@ -161,42 +161,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('houstonBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
         fetchWeatherData('Houston');
     });
 
     document.getElementById('losAngelesBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
         fetchWeatherData('Los Angeles');
     });
 
     document.getElementById('washingtonDcBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block'
         });
         fetchWeatherData('Washington D.C.');
     });
 
     document.getElementById('seattleBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
         fetchWeatherData('Seattle');
     });
 
     document.getElementById('portlandBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
         fetchWeatherData('Portland');
     });
 
     document.getElementById('vancouverBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
         fetchWeatherData('Vancouver');
