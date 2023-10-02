@@ -35,10 +35,10 @@ header, h1 {
     width: 100%;
     margin-left: 6px;
 }
-
-.forecast-container, .col-md-2, h2 + .text-center {
+/* 
+.forecast-container, .col-md-2, h2 {
     display: none;
-  }
+  } */
 
 .bg-secondary {
     width: 18%;
