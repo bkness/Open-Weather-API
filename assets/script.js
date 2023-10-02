@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(function (data) {
                 console.log(data);
-                document.getElementById('currentCityNameDate').textContent = data.name + " " + data.dt;
+                var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A');
+                document.getElementById('currentCityNameDate').textContent = data.name + " " + cityNameDate;
                 document.getElementById('currentTemp').textContent = "Temperature: " + data.main.temp + "°F";
                 document.getElementById('currentWindSpeed').textContent = "Wind Speed: " + data.wind.speed + " mph";
                 document.getElementById('currentHumidity').textContent = "Humidity: " + data.main.humidity + "%";
@@ -32,13 +33,13 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(function (data) {
                 console.log(data);
-                var firstDayData = data.list[0];
 
+                var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A');
+                var firstDayData = data.list[0];
                 var date = new Date(firstDayData.dt_txt).toLocaleDateString();
                 var temperature = firstDayData.main.temp;
                 var windSpeed = firstDayData.wind.speed;
                 var humidity = firstDayData.main.humidity;
-
                 var dayOneElement = document.getElementById('dayOne');
                 if (dayOneElement) {
                     dayOneElement.innerHTML = `
@@ -50,12 +51,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var secondDayData = data.list[8];
-
                 var date = new Date(secondDayData.dt_txt).toLocaleDateString();
                 var temperature = secondDayData.main.temp;
                 var windSpeed = secondDayData.wind.speed;
                 var humidity = secondDayData.main.humidity;
-
                 var dayTwoElement = document.getElementById('dayTwo');
                 if (dayTwoElement) {
                     dayTwoElement.innerHTML = `
@@ -67,12 +66,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var thirdDayData = data.list[16];
-
                 var date = new Date(thirdDayData.dt_txt).toLocaleDateString();
                 var temperature = thirdDayData.main.temp;
                 var windSpeed = thirdDayData.wind.speed;
                 var humidity = thirdDayData.main.humidity;
-
                 var dayThreeElement = document.getElementById('dayThree');
                 if (dayThreeElement) {
                     dayThreeElement.innerHTML = `
@@ -84,12 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var fourthDayData = data.list[24];
-
                 var date = new Date(fourthDayData.dt_txt).toLocaleDateString();
                 var temperature = fourthDayData.main.temp;
                 var windSpeed = fourthDayData.wind.speed;
                 var humidity = fourthDayData.main.humidity;
-
                 var dayFourElement = document.getElementById('dayFour');
                 if (dayFourElement) {
                     dayFourElement.innerHTML = `
@@ -101,12 +96,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var fifthDayData = data.list[32];
-
                 var date = new Date(fifthDayData.dt_txt).toLocaleDateString();
                 var temperature = fifthDayData.main.temp;
                 var windSpeed = fifthDayData.wind.speed;
                 var humidity = fifthDayData.main.humidity;
-
                 var dayFiveElement = document.getElementById('dayFive');
                 if (dayFiveElement) {
                     dayFiveElement.innerHTML = `
