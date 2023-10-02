@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         fetchWeatherData(cityName);
 
         // Show the forecast containers
-        document.querySelectorAll('.forecast-container, .col-md-2, h3').forEach(function (element) {
+        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
     });
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error fetching current weather:', error);
             });
 
-            function showForecastHeading() {
+        function showForecastHeading() {
             var forecastHeading = document.createElement('h2');
             forecastHeading.textContent = '5 Day Forecast';
             document.getElementById('forecastContainer').appendChild(forecastHeading);
