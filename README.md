@@ -3,7 +3,7 @@ This is a weather dshboard I created using third party apis. With the following 
 Here is a screenshot of the app
 ![_Users_brandonkelly_bootcamp_homeworks_open-weather-api_index html](https://github.com/bkness/open-weather-api/assets/123907755/ca2467cb-3f03-404a-9d83-47bd0d8170a8)
 
-You can access the deployed project [here]{https://bkness.github.io/open-weather-api/}
+You can access the deployed project [here](https://bkness.github.io/open-weather-api/)
                             <p>Temperature: ${temperature}°F</p>
                             <p>Wind Speed: ${windSpeed} mph</p>
                             <p>Humidity: ${humidity}%</p>
