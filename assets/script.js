@@ -5,11 +5,6 @@ document.addEventListener('DOMContentLoaded', function () {
         var suggestionsContainer = document.getElementById('suggestions');
     });
 
-    // Define fetchWeatherData outside of any event listener
-    function fetchWeatherData(cityName) {
-        // ... (rest of the code for fetchWeatherData function)
-    }
-
     // Event listener for form submission
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevent the form from actually submitting
@@ -141,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error fetching 5-day forecast:', error);
             });
     }
-
+     //   an event lisener with each button to provide a forecast when the button is pressed
     document.getElementById('newYorkBtn').addEventListener('click', function () {
         // Show the forecast containers
         document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
@@ -152,7 +147,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('phoenixBtn').addEventListener('click', function () {
-        // Show the forecast containers
         document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
