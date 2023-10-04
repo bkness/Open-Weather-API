@@ -9,13 +9,11 @@ h1 {
   
 
 .forecast-container {
-    /* This ensures they stay on the same row */
     overflow-x: auto;
-    /* Enable horizontal scrolling if necessary */
     border: solid;
     border-color: #ccc;
     width: 100%;
-    margin-left: 6px;
+
 }
 
 .forecast-container,
@@ -62,11 +60,10 @@ button {
     background-color: #f2f2f2;
 }
 
-/* media queries to improve look on smaller px screens */
+
 @media (max-width: 768px) {
     .col-md-2 {
         width: 100%;
-        /* Make each box take up 100% of the width */
         margin-bottom: 10px;
     }
 
@@ -83,6 +80,6 @@ button {
         margin-left: 0;
        border: none;
     }
-
-
 }
+
+
