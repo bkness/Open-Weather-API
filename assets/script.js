@@ -35,6 +35,12 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('currentWindSpeed').textContent = "Wind Speed: " + data.wind.speed + " mph";
                 document.getElementById('currentHumidity').textContent = "Humidity: " + data.main.humidity + "%";
                 document.getElementById('currentCondition').textContent = "Condition: " + data.weather[0].main;
+
+                var iconCode = data.weather[0].icon;
+                var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
+                document.getElementById('conditionIcon').src = iconUrl;
+
+
             })
             .catch(function (error) {
                 console.error('Error fetching current weather:', error);
@@ -136,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.error('Error fetching 5-day forecast:', error);
             });
     }
-     //   an event lisener with each button to provide a forecast when the button is pressed
+    //   an event lisener with each button to provide a forecast when the button is pressed
     document.getElementById('newYorkBtn').addEventListener('click', function () {
         // Show the forecast containers
         document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
