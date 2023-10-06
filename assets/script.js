@@ -1,35 +1,62 @@
 document.addEventListener('DOMContentLoaded', function () {
     var searchInput = document.getElementById('focusedInput');
+    // using local storage to save city search information to a savedCities
+    var savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
+    // here i am creating a function and and element by my id suggestions in the html
+    function renderSavedCities() {
+        suggestionsContainer = document.getElementById('suggestions');
+        suggestionsContainer.innerHTML = '';
+        //here im using the forEach funtion as a loop to create multiple buttons when a city is searched and the save into local storage - it will then load onto the page as a button the user can click
+        savedCities.forEach(function (city) {
+            var cityButton = document.createElement('button');
+            cityButton.classList.add('btn', 'btn-secondary', 'm-1');
+            cityButton.textContent = city;
+            cityButton.addEventListener('click', function () {
+                fetchWeatherData(city);
+            });
+            suggestionsContainer.appendChild(cityButton);
+        });
+    }
+    // renders saved cities to page on load
+    renderSavedCities()
+
+    var searchInput = document.getElementById('focusedInput');
     searchInput.addEventListener('click', function () {
         this.value = '';
-        var suggestionsContainer = document.getElementById('suggestions');
-    });
+    })
 
-    // Event listener for form submission
+    // event listener for form submission
     document.querySelector('form').addEventListener('submit', function (event) {
-        event.preventDefault(); // Prevent the form from actually submitting
+        event.preventDefault(); // prevent the form from actually submitting
 
-        var cityName = document.getElementById('focusedInput').value;
+        var cityName = searchInput.value;
         fetchWeatherData(cityName);
 
-        // Show the forecast containers
+        // shows all of my forecast contianers with the block display
         document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
+        //saving searched cities to local storage
+        if (!savedCities.includes(cityName)) {
+            savedCities.push(cityName);
+            localStorage.setItem('savedCities', JSON.stringify(savedCities));
+            renderSavedCities();
+        }        
+
     });
 
     function fetchWeatherData(cityName) {
         var currentWeatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
         var fiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
 
-        // Fetch current weather data
+        // fetch current weather data using a function that we turned into a json so we can pull and use data from the array returned
         fetch(currentWeatherApi)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
                 console.log(data);
-                var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A');
+                var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A'); // here i used day js to show time in a readable form to the user
                 document.getElementById('currentCityNameDate').textContent = data.name + " " + cityNameDate;
                 document.getElementById('currentTemp').textContent = "Temperature: " + data.main.temp + "°F";
                 document.getElementById('currentWindSpeed').textContent = "Wind Speed: " + data.wind.speed + " mph";
@@ -135,72 +162,11 @@ document.addEventListener('DOMContentLoaded', function () {
                             <p>Humidity: ${humidity}%</p>
                         `;
                 }
-
-                // Continue with similar code for other days
             })
             .catch(function (error) {
                 console.error('Error fetching 5-day forecast:', error);
             });
     }
-    //   an event lisener with each button to provide a forecast when the button is pressed
-    document.getElementById('newYorkBtn').addEventListener('click', function () {
-        // Show the forecast containers
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block';
-        });
-
-        fetchWeatherData('New York');
-    });
-
-    document.getElementById('phoenixBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block';
-        });
-
-        fetchWeatherData('Phoenix');
-    });
-
-    document.getElementById('houstonBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block';
-        });
-        fetchWeatherData('Houston');
-    });
-
-    document.getElementById('losAngelesBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block';
-        });
-        fetchWeatherData('Los Angeles');
-    });
-
-    document.getElementById('washingtonDcBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block'
-        });
-        fetchWeatherData('Washington D.C.');
-    });
-
-    document.getElementById('seattleBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block';
-        });
-        fetchWeatherData('Seattle');
-    });
-
-    document.getElementById('portlandBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block';
-        });
-        fetchWeatherData('Portland');
-    });
-
-    document.getElementById('vancouverBtn').addEventListener('click', function () {
-        document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
-            element.style.display = 'block';
-        });
-        fetchWeatherData('Vancouver');
-    });
 });
 
 
