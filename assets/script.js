@@ -32,13 +32,6 @@ document.addEventListener('DOMContentLoaded', function () {
         this.value = '';
     });
 
-    // Remove duplicate declaration of searchInput
-    // var searchInput = document.getElementById('focusedInput');
-
-    searchInput.addEventListener('click', function () {
-        this.value = '';
-    });
-
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
 
