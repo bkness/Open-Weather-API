@@ -99,7 +99,12 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(function (data) {
                 console.log(data);
-                    // this is a dayjs method in which i can make the time format readable for the user
+
+                var day1Code = data.list[0].weather[0].icon;
+                var day1Icon = "http://openweathermap.org/img/w/" + day1Code + ".png";
+                document.getElementById('dayOneIcon').src = day1Icon
+
+                // this is a dayjs method in which i can make the time format readable for the user
                 var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A');
                 var firstDayData = data.list[0];
                 var date = new Date(firstDayData.dt_txt).toLocaleDateString(); // accessing locla storage i can display the users time accurately for current forecast
@@ -111,6 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (dayOneElement) {
                     dayOneElement.innerHTML = `
                         <h3>${date}</h3>
+                        <img class="forecast-icon" id="dayOneIcon" src="${day1Icon}" alt="Weather Icon">
                         <p>Temperature: ${temperature}°F</p>
                         <p>Wind Speed: ${windSpeed} mph</p>
                         <p>Humidity: ${humidity}%</p>
@@ -179,6 +185,8 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(function (error) {
                 console.error('Error fetching 5-day forecast:', error);
+           
+                
             });
     }
 });
