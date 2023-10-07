@@ -1,64 +1,76 @@
+// retrieving dom elements and using local storage to make a element savedCities and access it later
 document.addEventListener('DOMContentLoaded', function () {
     var searchInput = document.getElementById('focusedInput');
     var savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
 
     document.getElementById('suggestions').addEventListener('click', function (event) {
         var target = event.target;
-
-        if (target && target.tagName === 'BUTTON') {
+        // saving searched data 
+        if (target && target.tagName === 'button') {
+            // fetches weatehr data for the selected city 
             var cityName = target.textContent;
             fetchWeatherData(cityName);
         }
     });
-
+    // rendering saved cities from local storage as a button that the user can use later for convenience 
     function renderSavedCities() {
         suggestionsContainer = document.getElementById('suggestions');
         suggestionsContainer.innerHTML = '';
 
         savedCities.forEach(function (city) {
+            // creating city buttons 
             var cityButton = document.createElement('button');
             cityButton.classList.add('btn', 'btn-secondary', 'm-1');
             cityButton.textContent = city;
             cityButton.addEventListener('click', function () {
+               // fetching weather data when a saved city button is clicked
                 fetchWeatherData(city);
+                // displays forecast elements 
+                document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
+                    element.style.display = 'block';
+                });
             });
             suggestionsContainer.appendChild(cityButton);
         });
     }
-
+    // rendering savd cities with the new adition
     renderSavedCities();
-
+    // event listener to clear the search field text when user clicks on the form 
     searchInput.addEventListener('click', function () {
         this.value = '';
     });
-
+    // event listener to handle my form submit 
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
-
+        // grabbing city name from search input 
         var cityName = searchInput.value;
+        // fetching weather data for searched city 
         fetchWeatherData(cityName);
-
+        // display forecast elements 
         document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
         });
-
+        // saving the searched city to local storage 
         if (!savedCities.includes(cityName)) {
             savedCities.push(cityName);
             localStorage.setItem('savedCities', JSON.stringify(savedCities));
+            // re renders saved cities with the new adition 
             renderSavedCities();
         }
     });
-
+    // fetches a 5 day forecast and current foecast weather data for given city 
     function fetchWeatherData(cityName) {
         var currentWeatherApi = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
         var fiveDayForecast = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityName + "&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial";
-
+        // fetching data from my apis then turning it into a json so its object data can be accessed and used effectively
         fetch(currentWeatherApi)
             .then(function (response) {
                 return response.json();
             })
+            // returnes the json arrat 
             .then(function (data) {
                 console.log(data);
+                // taking element ids and displaying them to our html ids 
                 var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A');
                 document.getElementById('currentCityNameDate').textContent = data.name + " " + cityNameDate;
                 document.getElementById('currentTemp').textContent = "Temperature: " + data.main.temp + "°F";
@@ -66,6 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('currentHumidity').textContent = "Humidity: " + data.main.humidity + "%";
                 document.getElementById('currentCondition').textContent = "Condition: " + data.weather[0].main;
 
+                // here i am able to call on the icon data to add the appropriate icon to the current forecast where i have it defined in the html 
                 var iconCode = data.weather[0].icon;
                 var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
                 document.getElementById('conditionIcon').src = iconUrl;
@@ -73,26 +86,27 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(function (error) {
                 console.error('Error fetching current weather:', error);
             });
-
+            // here i created an element and appended it to forecastHeader to get my retrieved data to respond appropriately
         function showForecastHeading() {
             var forecastHeading = document.createElement('h2');
             forecastHeading.textContent = '5 Day Forecast';
             document.getElementById('forecastContainer').appendChild(forecastHeading);
         }
-
+        // here i created a fetch for my 5 day response json so i can access the correct object properties data and display it to my html containers   
         fetch(fiveDayForecast)
             .then(function (response) {
                 return response.json();
             })
             .then(function (data) {
                 console.log(data);
-
+                    // this is a dayjs method in which i can make the time format readable for the user
                 var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A');
                 var firstDayData = data.list[0];
-                var date = new Date(firstDayData.dt_txt).toLocaleDateString();
+                var date = new Date(firstDayData.dt_txt).toLocaleDateString(); // accessing locla storage i can display the users time accurately for current forecast
                 var temperature = firstDayData.main.temp;
                 var windSpeed = firstDayData.wind.speed;
                 var humidity = firstDayData.main.humidity;
+                // creating a variable and array that can display data retrieved from the api directly into the html 
                 var dayOneElement = document.getElementById('dayOne');
                 if (dayOneElement) {
                     dayOneElement.innerHTML = `
