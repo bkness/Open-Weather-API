@@ -99,10 +99,26 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .then(function (data) {
                 console.log(data);
-
+                // Here I added some code functions to get icon data to display to each day in the 5 day forecast
                 var day1Code = data.list[0].weather[0].icon;
                 var day1Icon = "http://openweathermap.org/img/w/" + day1Code + ".png";
                 document.getElementById('dayOneIcon').src = day1Icon
+
+                var day2Code = data.list[8].weather[0].icon;
+                var day2Icon = "http://openweathermap.org/img/w/" + day2Code + ".png";
+                document.getElementById('dayTwoIcon').src = day2Icon
+
+                var day3Code = data.list[16].weather[0].icon;
+                var day3Icon = "http://openweathermap.org/img/w/" + day3Code + ".png";
+                document.getElementById('dayThreeIcon').src = day3Icon
+
+                var day4Code = data.list[24].weather[0].icon;
+                var day4Icon = "http://openweathermap.org/img/w/" + day4Code + ".png";
+                document.getElementById('dayFourIcon').src = day4Icon
+
+                var day5Code = data.list[32].weather[0].icon;
+                var day5Icon = "http://openweathermap.org/img/w/" + day5Code + ".png";
+                document.getElementById('dayFiveIcon').src = day5Icon
 
                 // this is a dayjs method in which i can make the time format readable for the user
                 var cityNameDate = dayjs(data.dt * 1000).format('MMMM D, YYYY h:mm A');
@@ -132,6 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (dayTwoElement) {
                     dayTwoElement.innerHTML = `
                             <h3>${date}</h3>
+                            <img class="forecast-icon" id="dayTwoIcon" src="${day2Icon}" alt="Weather Icon">
                             <p>Temperature: ${temperature}°F</p>
                             <p>Wind Speed: ${windSpeed} mph</p>
                             <p>Humidity: ${humidity}%</p>
@@ -147,6 +164,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (dayThreeElement) {
                     dayThreeElement.innerHTML = `
                             <h3>${date}</h3>
+                            <img class="forecast-icon" id="dayThreeIcon" src="${day3Icon}" alt="Weather Icon">
                             <p>Temperature: ${temperature}°F</p>
                             <p>Wind Speed: ${windSpeed} mph</p>
                             <p>Humidity: ${humidity}%</p>
@@ -162,6 +180,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (dayFourElement) {
                     dayFourElement.innerHTML = `
                             <h3>${date}</h3>
+                            <img class="forecast-icon" id="dayFourIcon" src="${day4Icon}" alt="Weather Icon">
                             <p>Temperature: ${temperature}°F</p>
                             <p>Wind Speed: ${windSpeed} mph</p>
                             <p>Humidity: ${humidity}%</p>
@@ -177,6 +196,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (dayFiveElement) {
                     dayFiveElement.innerHTML = `
                             <h3>${date}</h3>
+                            <img class="forecast-icon" id="dayFiveIcon" src="${day5Icon}" alt="Weather Icon">
                             <p>Temperature: ${temperature}°F</p>
                             <p>Wind Speed: ${windSpeed} mph</p>
                             <p>Humidity: ${humidity}%</p>
