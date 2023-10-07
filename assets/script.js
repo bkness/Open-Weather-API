@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('suggestions').addEventListener('click', function (event) {
         var target = event.target;
 
-        if (target && target.tagName === 'button') {
+        if (target && target.tagName === 'BUTTON') {
             var cityName = target.textContent;
             fetchWeatherData(cityName);
         }
@@ -32,7 +32,9 @@ document.addEventListener('DOMContentLoaded', function () {
         this.value = '';
     });
 
-    var searchInput = document.getElementById('focusedInput');
+    // Remove duplicate declaration of searchInput
+    // var searchInput = document.getElementById('focusedInput');
+
     searchInput.addEventListener('click', function () {
         this.value = '';
     });
@@ -109,10 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var secondDayData = data.list[8];
-                date = new Date(secondDayData.dt_txt).toLocaleDateString(); // Updated date variable
-                temperature = secondDayData.main.temp; // Updated temperature variable
-                windSpeed = secondDayData.wind.speed; // Updated windSpeed variable
-                humidity = secondDayData.main.humidity; // Updated humidity variable
+                date = new Date(secondDayData.dt_txt).toLocaleDateString(); 
+                temperature = secondDayData.main.temp; 
+                windSpeed = secondDayData.wind.speed; 
+                humidity = secondDayData.main.humidity;
                 var dayTwoElement = document.getElementById('dayTwo');
                 if (dayTwoElement) {
                     dayTwoElement.innerHTML = `
@@ -124,10 +126,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var thirdDayData = data.list[16];
-                date = new Date(thirdDayData.dt_txt).toLocaleDateString(); // Updated date variable
-                temperature = thirdDayData.main.temp; // Updated temperature variable
-                windSpeed = thirdDayData.wind.speed; // Updated windSpeed variable
-                humidity = thirdDayData.main.humidity; // Updated humidity variable
+                date = new Date(thirdDayData.dt_txt).toLocaleDateString(); 
+                temperature = thirdDayData.main.temp;
+                windSpeed = thirdDayData.wind.speed;
+                humidity = thirdDayData.main.humidity;
                 var dayThreeElement = document.getElementById('dayThree');
                 if (dayThreeElement) {
                     dayThreeElement.innerHTML = `
@@ -139,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var fourthDayData = data.list[24];
-                date = new Date(fourthDayData.dt_txt).toLocaleDateString(); // Updated date variable
-                temperature = fourthDayData.main.temp; // Updated temperature variable
-                windSpeed = fourthDayData.wind.speed; // Updated windSpeed variable
-                humidity = fourthDayData.main.humidity; // Updated humidity variable
+                date = new Date(fourthDayData.dt_txt).toLocaleDateString(); 
+                temperature = fourthDayData.main.temp; 
+                windSpeed = fourthDayData.wind.speed;
+                humidity = fourthDayData.main.humidity; 
                 var dayFourElement = document.getElementById('dayFour');
                 if (dayFourElement) {
                     dayFourElement.innerHTML = `
@@ -154,10 +156,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var fifthDayData = data.list[32];
-                date = new Date(fifthDayData.dt_txt).toLocaleDateString(); // Updated date variable
-                temperature = fifthDayData.main.temp; // Updated temperature variable
-                windSpeed = fifthDayData.wind.speed; // Updated windSpeed variable
-                humidity = fifthDayData.main.humidity; // Updated humidity variable
+                date = new Date(fifthDayData.dt_txt).toLocaleDateString(); 
+                temperature = fifthDayData.main.temp; 
+                windSpeed = fifthDayData.wind.speed;
+                humidity = fifthDayData.main.humidity; 
                 var dayFiveElement = document.getElementById('dayFive');
                 if (dayFiveElement) {
                     dayFiveElement.innerHTML = `
