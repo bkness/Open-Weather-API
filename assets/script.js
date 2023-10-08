@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
             cityButton.classList.add('btn', 'btn-secondary', 'm-1');
             cityButton.textContent = city;
             cityButton.addEventListener('click', function () {
-               // fetching weather data when a saved city button is clicked
+                // fetching weather data when a saved city button is clicked
                 fetchWeatherData(city);
                 // displays forecast elements 
                 document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
@@ -42,10 +42,13 @@ document.addEventListener('DOMContentLoaded', function () {
     // event listener to handle my form submit 
     document.querySelector('form').addEventListener('submit', function (event) {
         event.preventDefault();
-        // grabbing city name from search input 
+        // grabbing city name from search input \ 
         var cityName = searchInput.value;
         // fetching weather data for searched city 
         fetchWeatherData(cityName);
+        
+        searchInput.value = '';
+
         // display forecast elements 
         document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
             element.style.display = 'block';
@@ -86,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(function (error) {
                 console.error('Error fetching current weather:', error);
             });
-            // here i created an element and appended it to forecastHeader to get my retrieved data to respond appropriately
+        // here i created an element and appended it to forecastHeader to get my retrieved data to respond appropriately
         function showForecastHeading() {
             var forecastHeading = document.createElement('h2');
             forecastHeading.textContent = '5 Day Forecast';
@@ -140,9 +143,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var secondDayData = data.list[8];
-                date = new Date(secondDayData.dt_txt).toLocaleDateString(); 
-                temperature = secondDayData.main.temp; 
-                windSpeed = secondDayData.wind.speed; 
+                date = new Date(secondDayData.dt_txt).toLocaleDateString();
+                temperature = secondDayData.main.temp;
+                windSpeed = secondDayData.wind.speed;
                 humidity = secondDayData.main.humidity;
                 var dayTwoElement = document.getElementById('dayTwo');
                 if (dayTwoElement) {
@@ -156,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var thirdDayData = data.list[16];
-                date = new Date(thirdDayData.dt_txt).toLocaleDateString(); 
+                date = new Date(thirdDayData.dt_txt).toLocaleDateString();
                 temperature = thirdDayData.main.temp;
                 windSpeed = thirdDayData.wind.speed;
                 humidity = thirdDayData.main.humidity;
@@ -172,10 +175,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var fourthDayData = data.list[24];
-                date = new Date(fourthDayData.dt_txt).toLocaleDateString(); 
-                temperature = fourthDayData.main.temp; 
+                date = new Date(fourthDayData.dt_txt).toLocaleDateString();
+                temperature = fourthDayData.main.temp;
                 windSpeed = fourthDayData.wind.speed;
-                humidity = fourthDayData.main.humidity; 
+                humidity = fourthDayData.main.humidity;
                 var dayFourElement = document.getElementById('dayFour');
                 if (dayFourElement) {
                     dayFourElement.innerHTML = `
@@ -188,10 +191,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
 
                 var fifthDayData = data.list[32];
-                date = new Date(fifthDayData.dt_txt).toLocaleDateString(); 
-                temperature = fifthDayData.main.temp; 
+                date = new Date(fifthDayData.dt_txt).toLocaleDateString();
+                temperature = fifthDayData.main.temp;
                 windSpeed = fifthDayData.wind.speed;
-                humidity = fifthDayData.main.humidity; 
+                humidity = fifthDayData.main.humidity;
                 var dayFiveElement = document.getElementById('dayFive');
                 if (dayFiveElement) {
                     dayFiveElement.innerHTML = `
@@ -205,8 +208,8 @@ document.addEventListener('DOMContentLoaded', function () {
             })
             .catch(function (error) {
                 console.error('Error fetching 5-day forecast:', error);
-           
-                
+
+
             });
     }
 });
