@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var cityName = searchInput.value;
         // fetching weather data for searched city 
         fetchWeatherData(cityName);
-        
+
         searchInput.value = '';
 
         // display forecast elements 
