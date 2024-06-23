@@ -2,6 +2,9 @@
 
 ![Weather Dashboard Screenshot](/assets/weather.png)
 
+## Live Demo
+Check out the live demo [here](https://bkness.github.io/open-weather-api/)
+
 ## Description
 
 This application serves as a streamlined weather forecasting tool, enabling users to retrieve current and five-day forecasts by city. Upon searching for a city, the app displays the current weather conditions alongside a five-day forecast, complete with graphical representations of anticipated weather patterns. User-entered cities are persistently stored in local storage, facilitating quick access for future reference until manually cleared. This app provides a user-friendly interface for seamless weather information retrieval and storage management.
