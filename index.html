@@ -20,19 +20,20 @@
   </div>
   <div class="container">
     <div class="row">
-      <section class="col-sm-3 ps-0">
+      <section class="col-lg-2">
         <h3>Search for a city:</h3>
         <form class="form-horizontal">
-          <div class="form-group mb-0">
-            <div class="col-sm-4 ps-0">
+          <div class="form-group">
+            <div class="col-sm-4">
               <input id="focusedInput" type="text" value="Search here">
+              <button id="search-btn" class="btn" type="submit">Search City</button>
             </div>
           </div>
         </form>
-        <div id="suggestions"></div>
+        <div id="forecasts"></div>
         <div class="col-md-6"></div>
       </section>
-      <section class="col-md-9">
+      <section class="col-lg-10">
         <div class="text-center">
           <div class="forecast-container" style="display:none;">
             <div class="weather-info" id="CurrentForecast">
