@@ -1,4 +1,22 @@
+:root {
+    --blue-fade: linear-gradient(to right, #007bff, #0056b3);
+    --gray-fade: linear-gradient(to bottom, #666, #333);
+    --white: #FFFFFF;
+}
 
+.header {
+    background: var(--blue-fade);
+    color: var(--white);
+    text-align: center;
+}
+
+h2,
+.forecast-container,
+.col-md-2 {
+    display: none;
+}
+
+/* 
 .p-3.mb-2.text-center.bg-primary.text-white {
     background: linear-gradient(to right, #007bff, #0056b3);
   }
@@ -49,7 +67,7 @@ button {
     justify-content: flex-start;
 }
 
-.suggestion-item {
+.daily-row {
     cursor: pointer;
     padding: 8px;
     border: 1px solid #ccc;
@@ -63,4 +81,4 @@ button {
     background-color: #f2f2f2;
 }
 
-
+ */
