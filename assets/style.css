@@ -2,83 +2,90 @@
     --blue-fade: linear-gradient(to right, #007bff, #0056b3);
     --gray-fade: linear-gradient(to bottom, #666, #333);
     --white: #FFFFFF;
+    --black: #0C0C0C;
+}
+
+body {
+    font-family: Arial, sans-serif;
 }
 
 .header {
     background: var(--blue-fade);
     color: var(--white);
-    text-align: center;
+    padding: 10px;
 }
 
-h2,
-.forecast-container,
-.col-md-2 {
-    display: none;
+.header h1 {
+    margin: 0;
 }
 
-/* 
-.p-3.mb-2.text-center.bg-primary.text-white {
-    background: linear-gradient(to right, #007bff, #0056b3);
-  }
-
-.forecast-container {
-    border: solid;
-    border-color: #ccc;
-    width: 100%;
-
+p {
+    font-size: 1.2rem;
 }
 
-.forecast-container,
-.col-md-2,
 h2 {
-    display: none;
-    text-align: center;
+    color: var(--black);
 }
 
-.col-md-2 {
-    background: linear-gradient(to bottom, #666, #333);
-    border: 2px solid #ccc;
+.container {
+    padding: 10px;
 }
 
+/* Search Section */
 
-h3 {
-    display: flex;
-    justify-content: flex-start;
+input {
+    width: 100%;
+    margin-left: 3px;
+}
+
+.form-control {
+    border-radius: 7px;
+    width: 100%;
     margin-bottom: 10px;
-} 
-
-.bg-secondary {
-    width: 18%;
 }
 
-section {
-    margin-right: 0;
+.btn {
+    background: var(--blue-fade);
+    color: var(--white);
+    border-radius: 7px;
+    transition: background-color 0.3s ease;
+    margin: 10px 0 5px 3px;
+    width: 100%;
+    text-transform: uppercase;
+}
+
+/* Forecast Section */
+.forecast-container {
+    background: var(--gray-fade);
+    color: var(--white);
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 7px;
+}
+
+.custom-section {
+    display: flex;
+    justify-content: space-between;
+    background: var(--gray-fade);
+    color: var(--white);
+    padding: 10px;
     border-radius: 5px;
 }
 
-input {
-    margin: 10px 5px 30px 0;
+.custom-section h3 {
+    color: var(--blue-fade);
+    margin-bottom: 10px;
 }
 
-button {
-    width: 180px;
-    background: linear-gradient(to right, #007bff, #0056b3);
-    display: flex;
-    justify-content: flex-start;
+.daily-container {
+    background: var(--gray-fade);
+    color: var(--white);
+    border-radius: 7px;
+    padding: 3px;
 }
 
 .daily-row {
-    cursor: pointer;
-    padding: 8px;
-    border: 1px solid #ccc;
-    background-color: #fff;
-    border-radius: 4px;
-    margin-top: 2px;
-    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
 }
-
-.suggestion-item:hover {
-    background-color: #f2f2f2;
-}
-
- */

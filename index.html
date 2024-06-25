@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.7/dayjs.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
@@ -12,30 +13,29 @@
 </head>
 
 <body>
-  <div class="header-container">
-    <header class="header">
+  <div class="p-3 mb-2 text-center bg-primary text-white">
+    <header>
       <h1>Weather Dashboard</h1>
     </header>
   </div>
   <div class="container">
     <div class="row">
-      <section class="col-12 col-lg-2">
-        <h3>Search for a city:</h3>
+      <section class="col-sm-3 ps-0">
+        <h3 class="text-uppercase">Search a City:</h3>
         <form class="form-horizontal">
-          <div class="form-group">
-            <div class="col-12">
-              <input id="focusedInput" type="text" value="Search here" class="form-control">
-              <button id="search-btn" class="btn" type="submit">Search City</button>
-            </div>
+          <div class="form-group mb-0">
+              <input id="focusedInput" type="text" placeholder="Ex: Phoenix" class="text-uppercase">
+              <button id="search-btn" class="btn">Search City</button>  
           </div>
         </form>
-        <div id="forecasts" class="forecasts"></div>
+        <div id="forecasts"></div>
+        <div class="col-md-6"></div>
       </section>
-      <section class="col-12 col-lg-10">
+      <section class="col-md-9">
         <div class="text-center">
-          <div class="forecast-container">
+          <div class="forecast-container" style="display:none;">
             <div class="weather-info" id="CurrentForecast">
-              <h1>Today's Forecast</h1>
+              <h1>Todays Forecast</h1>
               <p class="weather-info" id="currentCityNameDate"></p>
               <img id="conditionIcon" src="" alt="Weather Icon">
               <p class="weather-info" id="currentTemp"></p>
@@ -45,41 +45,44 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row daily-row">
           <div class="text-center">
-            <h2 id="forecastHeading">Five Day Forecast</h2>
+            <h2 id="forecastHeading" style="display:none;">Five Day Forecast</h2>
           </div>
-          <section class="col-12 col-md-2 custom-section" id="dayOne">
-            <p class="weather-info" id="dayOneCityNameDate"></p>
+          <section class="col-md-2 daily-container" style="display:none;"
+            id="dayOne">
+            <p class="weather-info center" id="dayOneCityNameDate"></p>
             <img class="forecast-icon" id="dayOneIcon" src="" alt="Weather Icon">
             <p class="weather-info" id="dayOnetemp"></p>
             <p class="weather-info" id="dayOneWind"></p>
             <p class="weather-info" id="dayOneHumidity"></p>
           </section>
-          <section class="col-12 col-md-2 custom-section" id="dayTwo">
+          <section class="col-md-2 daily-container" style="display:none;"
+            id="dayTwo">
             <p class="weather-info" id="dayTwoCityNameDate"></p>
             <img class="forecast-icon" id="dayTwoIcon" src="" alt="Weather Icon">
             <p class="weather-info" id="dayTwoTemp"></p>
             <p class="weather-info" id="dayTwoWind"></p>
             <p class="weather-info" id="dayTwoHumidity"></p>
           </section>
-          <section class="col-12 col-md-2 custom-section" id="dayThree">
+          <section class="col-md-2 daily-container" style="display:none;"
+            id="dayThree">
             <p class="weather-info" id="dayThreeCityNameDate"></p>
             <img class="forecast-icon" id="dayThreeIcon" src="" alt="Weather Icon">
             <p class="weather-info" id="dayThreeTemp"></p>
             <p class="weather-info" id="dayThreeWind"></p>
             <p class="weather-info" id="dayThreeHumidity"></p>
           </section>
-          <section class="col-12 col-md-2 custom-section" id="dayFour">
-            <h3>Day Four</h3>
+          <section class="col-md-2 daily-container" style="display:none;"
+            id="dayFour">
             <p class="weather-info" id="dayFourCityNameDate"></p>
             <img class="forecast-icon" id="dayFourIcon" src="" alt="Weather Icon">
             <p class="weather-info" id="dayFourTemp"></p>
             <p class="weather-info" id="dayFourWind"></p>
             <p class="weather-info" id="dayFourHumidity"></p>
           </section>
-          <section class="col-12 col-md-2 custom-section" id="dayFive">
-            <h3>Day Five</h3>
+          <section class=" col-md-2 daily-container" style="display:none;"
+            id="dayFive">
             <p class="weather-info" id="dayFiveCityNameDate"></p>
             <img class="forecast-icon" id="dayFiveIcon" src="" alt="Weather Icon">
             <p class="weather-info" id="dayFiveTemp"></p>

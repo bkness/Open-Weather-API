@@ -3,8 +3,9 @@ document.addEventListener('DOMContentLoaded', function () {
     var savedCities = JSON.parse(localStorage.getItem('savedCities')) || [];
 
     // Add event listener to the search button to handle form submission
-    document.querySelector('form').addEventListener('submit', function (event) {
+    document.getElementById('search-btn').addEventListener('click', function(event) {
         event.preventDefault();
+        
         // Grab the city name from the search input
         var cityName = searchInput.value.trim();
         if (cityName) {
@@ -13,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // Clear the search input
             searchInput.value = '';
             // Display forecast elements
-            document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
+            document.querySelectorAll('.forecast-container, .forecast, h2').forEach(function (element) {
                 element.style.display = 'block';
             });
             // Save the searched city to local storage if not already saved
@@ -38,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Fetch weather data when a saved city button is clicked
                 fetchWeatherData(city);
                 // Display forecast elements
-                document.querySelectorAll('.forecast-container, .col-md-2, h2').forEach(function (element) {
+                document.querySelectorAll('.forecast-container, .forecast, h2').forEach(function (element) {
                     element.style.display = 'block';
                 });
             });
@@ -54,11 +55,10 @@ document.addEventListener('DOMContentLoaded', function () {
         this.value = '';
     });
 
-    // Function to fetch weather data for a given city
     function fetchWeatherData(cityName) {
         var currentWeatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial`;
         var fiveDayForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=3266c576b90d62fe56a4b62feab62ebd&units=imperial`;
-
+    
         fetch(currentWeatherApi)
             .then(response => response.json())
             .then(data => {
@@ -68,17 +68,21 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('currentWindSpeed').textContent = `Wind Speed: ${data.wind.speed} mph`;
                 document.getElementById('currentHumidity').textContent = `Humidity: ${data.main.humidity}%`;
                 document.getElementById('currentCondition').textContent = `Condition: ${data.weather[0].main}`;
-
+    
                 var iconCode = data.weather[0].icon;
                 var iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
                 document.getElementById('conditionIcon').src = iconUrl;
+    
+                // Ensure visibility
+                document.querySelectorAll('.forecast-container, h1').forEach(function (element) {
+                    element.style.display = 'block';
+                });
             })
             .catch(error => console.error('Error fetching current weather:', error));
-
+    
         fetch(fiveDayForecast)
             .then(response => response.json())
             .then(data => {
-                // Function to set forecast data
                 function setForecastData(dayIndex, dayElementId, iconElementId) {
                     var dayData = data.list[dayIndex];
                     var date = new Date(dayData.dt_txt).toLocaleDateString();
@@ -90,21 +94,26 @@ document.addEventListener('DOMContentLoaded', function () {
                     var dayElement = document.getElementById(dayElementId);
                     if (dayElement) {
                         dayElement.innerHTML = `
-                            <h3>${date}</h3>
+                            <p>${date}</p>
                             <img class="forecast-icon" id="${iconElementId}" src="${iconUrl}" alt="Weather Icon">
                             <p>Temperature: ${temperature}°F</p>
                             <p>Wind Speed: ${windSpeed} mph</p>
                             <p>Humidity: ${humidity}%</p>
                         `;
+                        dayElement.style.display = 'block'; 
                     }
                 }
-
+    
                 setForecastData(0, 'dayOne', 'dayOneIcon');
                 setForecastData(8, 'dayTwo', 'dayTwoIcon');
                 setForecastData(16, 'dayThree', 'dayThreeIcon');
                 setForecastData(24, 'dayFour', 'dayFourIcon');
                 setForecastData(32, 'dayFive', 'dayFiveIcon');
+    
+                document.querySelectorAll('.forecast-container, h2').forEach(function (element) {
+                    element.style.display = 'block';
+                });
             })
             .catch(error => console.error('Error fetching 5-day forecast:', error));
-    }
+    }    
 });
