@@ -19,6 +19,10 @@ body {
     margin: 0;
 }
 
+.today {
+    margin-bottom: 10px
+}
+
 p {
     font-size: 1.2rem;
 }
@@ -45,13 +49,22 @@ input {
 }
 
 .btn {
-    background: var(--blue-fade);
+    background-color: #0056B3;
     color: var(--white);
     border-radius: 7px;
     transition: background-color 0.3s ease;
-    margin: 10px 0 5px 3px;
+    margin: 15px 0 0 3px;
     width: 100%;
     text-transform: uppercase;
+}
+
+.btn:hover {
+    background-color: #007bff;
+    color: var(--white);
+}
+
+.btn:focus {
+    background-color: #007bff;
 }
 
 /* Forecast Section */
@@ -63,15 +76,6 @@ input {
     border-radius: 7px;
 }
 
-.custom-section {
-    display: flex;
-    justify-content: space-between;
-    background: var(--gray-fade);
-    color: var(--white);
-    padding: 10px;
-    border-radius: 5px;
-}
-
 .custom-section h3 {
     color: var(--blue-fade);
     margin-bottom: 10px;
@@ -81,11 +85,24 @@ input {
     background: var(--gray-fade);
     color: var(--white);
     border-radius: 7px;
-    padding: 3px;
+    padding: 5px;
 }
 
 .daily-row {
     display: flex;
     justify-content: space-between;
     text-align: center;
+}
+
+/* media queries for mobile */
+
+@media (max-width: 768px) {
+    h3 {
+        margin-left: 5px;
+    }
+
+    .daily-container {
+        width: 95%;
+        margin: 10px 0 20px 13px;
+    }
 }

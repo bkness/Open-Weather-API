@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
         savedCities.forEach(function (city) {
             // Create city buttons
             var cityButton = document.createElement('button');
-            cityButton.classList.add('btn', 'btn-secondary', 'm-1');
+            cityButton.classList.add('btn');
             cityButton.textContent = city;
             cityButton.addEventListener('click', function () {
                 // Fetch weather data when a saved city button is clicked
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 var iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
                 document.getElementById('conditionIcon').src = iconUrl;
     
-                // Ensure visibility
                 document.querySelectorAll('.forecast-container, h1').forEach(function (element) {
                     element.style.display = 'block';
                 });
