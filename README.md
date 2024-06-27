@@ -1,6 +1,7 @@
 # Open Weather API Dashboard
 
-![Weather Dashboard Screenshot](/assets/weather.png)
+![Weather Dashboard Screenshot](/assets/front_page.png)
+![Weather Dashboard Screenshot](/assets/front_page_display.png)
 
 ## Live Demo
 Check out the live demo [here](https://bkness.github.io/open-weather-api/)
