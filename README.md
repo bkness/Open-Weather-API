@@ -152,7 +152,9 @@ We welcome contributions to improve this project. To contribute, follow these st
 
 Thank you for contributing to the Weather Dashboard project!
 
-
-
 ## Questions
-If you have any questions or suggestions, please feel free to reach out via GitHub issues or email at kbrandon863@gmail.com.
+If you have any questions or suggestions, please don't hesitate to reach out via GitHub issues or email.
+
+GitHub: bkness | https://github.com/bkness <br>
+Email: kbrandon863@gmail.com
+
