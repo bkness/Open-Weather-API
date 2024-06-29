@@ -16,6 +16,7 @@ This application serves as a streamlined weather forecasting tool, enabling user
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Questions](#questions)
+- [Live Deploy](#live-deploy)
 
 ## Installation
 
@@ -25,19 +26,9 @@ This application serves as a streamlined weather forecasting tool, enabling user
 - Navigate to the directory where you want to clone the repository.
 - Use the following command to clone the repository:
 
-  ```bash
-  git clone https://github.com/your-username/Weather-Dashboard
-  ```
+  
+`git clone https://github.com/your-username/Weather-Dashboard`
 
-Replace `your-username` with your GitHub username or the organization name where the repository resides.
-
-### 2. Navigate to the Project Directory:
-
-- Once cloned, navigate into the project directory:
-
-```bash
-cd Weather-Dashboard
-```
 
 ### 3. Open the Project:
 
@@ -151,6 +142,9 @@ We welcome contributions to improve this project. To contribute, follow these st
    - Once approved, your changes will be merged into the main branch.
 
 Thank you for contributing to the Weather Dashboard project!
+
+## Live Deploy
+You can access the live version of the Weather Dashboard [here](https://bkness.github.io/Open-Weather-API)
 
 ## Questions
 If you have any questions or suggestions, please don't hesitate to reach out via GitHub issues or email.
